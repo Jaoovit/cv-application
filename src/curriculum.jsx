@@ -23,21 +23,45 @@ const Curriculum = () => {
         return setLocation(e.target.value)
     }
 
-    ///
-
-    const [course, setCourse] = useState("")
+    const [courseName, setCourseName] = useState("")
     const [institute, setInstitute] = useState("");
     const [hour, setHour] = useState("");
+
+    function handleCourse(e) {
+        return setCourseName(e.target.value)
+    }
+
+    function handleInstitute(e) {
+        return setInstitute(e.target.value)
+    }
+
+    function handleHour(e) {
+        return setHour(e.target.value)
+    }
+
+    const [index, setIndex] = useState(0)
+    const [courses] = useState([])
 
 
     function handleCourseInformations (e) {
         e.preventDefault()
-        setCourse(e.target.value)
-        setInstitute(e.target.value)
-        setHour(e.target.value)
+        setIndex(1 + index)
+        const newCourse = {
+            id: index,
+            courseName: courseName,
+            institute: institute,
+            hour: hour
+        }
+        courses.push(newCourse)
     }
 
-    ///
+    const listCourses = courses.map((courses) => 
+        <div key={courses.id}>
+            <p>{courses.courseName}</p>
+            <p>{courses.institute}</p>
+            <p>{courses.hour}</p>
+        </div>
+    )
 
     return (
         <>
@@ -59,13 +83,13 @@ const Curriculum = () => {
             <div>
             <form>
                 <label htmlFor="">Course: </label>
-                <input type="text"/>
+                <input type="text" value={courseName} onChange={handleCourse}/>
 
                 <label htmlFor="">Institute: </label>
-                <input type="text"/>
+                <input type="text" value={institute} onChange={handleInstitute}/>
 
                 <label htmlFor="">Hours: </label>
-                <input type="text"/>
+                <input type="text" value={hour} onChange={handleHour}/>
 
                 <button onClick={handleCourseInformations}>Send</button>
             </form>
@@ -81,10 +105,13 @@ const Curriculum = () => {
             </section>
             <section>
                 <h2>Education</h2>
+                <div>{listCourses}</div>
             </section>
             </div>
         </>
     )
+
+    
 }
 
 export default Curriculum

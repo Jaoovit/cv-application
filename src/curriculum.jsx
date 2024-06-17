@@ -39,15 +39,15 @@ const Curriculum = () => {
         return setHour(e.target.value)
     }
 
-    const [index, setIndex] = useState(0)
+    const [indexCourse, setIndexCourse] = useState(0)
     const [courses] = useState([])
 
 
     function handleCourseInformations (e) {
         e.preventDefault()
-        setIndex(1 + index)
+        setIndexCourse(1 + indexCourse)
         const newCourse = {
-            id: index,
+            id: indexCourse,
             courseName: courseName,
             institute: institute,
             hour: hour
@@ -63,10 +63,51 @@ const Curriculum = () => {
         </div>
     )
 
+    const [company, setCompany] = useState("");
+    const [time, setTime] = useState("");
+    const [details, setDetails] = useState("");
+
+    function handleCompany(e) {
+        return setCompany(e.target.value);
+    }
+
+    function handleTime(e) {
+        return setTime(e.target.value);
+    }
+
+    function handleDetails(e) {
+        return setDetails(e.target.value);
+    }
+
+    const [indexExperience, setIndexExperience] = useState(0)
+    const [experience] = useState([])
+
+
+    function handleExperienceInformations (e) {
+        e.preventDefault()
+        setIndexExperience(1 + indexExperience)
+        const newExperience = {
+            id: indexExperience,
+            company: company,
+            time: time,
+            details: details
+        }
+        experience.push(newExperience)
+        console.log(experience)
+    }
+
+    const listExperience = experience.map((experience) => 
+        <div key={experience.id}>
+            <p>{experience.company}</p>
+            <p>{experience.time}</p>
+            <p>{experience.details}</p>
+        </div>
+    )
+
     return (
         <>
             <div>
-                <form>
+                <form action="#">
                     <label htmlFor="">Name: {" "}</label>
                     <input type="text" value={name} onChange={handleFirstname} />
 
@@ -81,18 +122,32 @@ const Curriculum = () => {
                 </form>
             </div>
             <div>
-            <form>
-                <label htmlFor="">Course: </label>
-                <input type="text" value={courseName} onChange={handleCourse}/>
+                <form action="#">
+                    <label htmlFor="">Course: </label>
+                    <input type="text" value={courseName} onChange={handleCourse}/>
 
-                <label htmlFor="">Institute: </label>
-                <input type="text" value={institute} onChange={handleInstitute}/>
+                    <label htmlFor="">Institute: </label>
+                    <input type="text" value={institute} onChange={handleInstitute}/>
 
-                <label htmlFor="">Hours: </label>
-                <input type="text" value={hour} onChange={handleHour}/>
+                    <label htmlFor="">Hours: </label>
+                    <input type="text" value={hour} onChange={handleHour}/>
 
-                <button onClick={handleCourseInformations}>Send</button>
-            </form>
+                    <button onClick={handleCourseInformations}>Send</button>
+                </form>
+            </div>
+            <div>
+                <form action="#">
+                <label htmlFor="">Company: </label>
+                    <input type="text" value={company} onChange={handleCompany}/>
+
+                    <label htmlFor="">Time: </label>
+                    <input type="text" value={time} onChange={handleTime}/>
+
+                    <label htmlFor="">Details: </label>
+                    <input type="text" value={details} onChange={handleDetails}/>
+
+                    <button onClick={handleExperienceInformations}>Send</button>
+                </form>
             </div>
             <div>
             <h1>Curriculum</h1>
@@ -106,6 +161,10 @@ const Curriculum = () => {
             <section>
                 <h2>Education</h2>
                 <div>{listCourses}</div>
+            </section>
+            <section>
+                <h2>Experience</h2>
+                <div>{listExperience}</div>
             </section>
             </div>
         </>

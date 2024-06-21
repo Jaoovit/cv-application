@@ -1,5 +1,6 @@
 import General from "./General"
 import Education from "./Education";
+import Experiences from "./Experience";
 import { useState } from "react";
 
 const Curriculum = () => {
@@ -59,18 +60,47 @@ const Curriculum = () => {
 
         e.preventDefault()
         setIndexCourse(indexCourse + 1)
-        /*
-        setCourses([...courses, {id: indexCourse, name: courseName, institute: institute, hour: hour}])
-        */
         const newCourse = new Course (indexCourse, courseName, institute, hour);
         courses.push(newCourse);
         setCourses(courses)
         console.log(courses)
     }
-    
-    function deleteCourse() {
 
-        setCourses(courses.filter(a => a.id !== courses.id))  
+    {/*Eperience information*/}
+
+    const [company, setCompany] = useState("");
+    const [time, setTime] = useState("");
+    const [details, setDetails] = useState("");
+
+    function handleCompany(e) {
+        return setCompany(e.target.value);
+    }
+
+    function handleTime(e) {
+        return setTime(e.target.value);
+    }
+
+    function handleDetails(e) {
+        return setDetails(e.target.value);
+    }
+
+    const [experiences, setExperiences] = useState([])
+    const [indexExperience, setIndexExperience] = useState(0)
+
+    function Experience (id, company, time, details) {
+        this.id = id
+        this.company = company,
+        this.time = time,
+        this.details = details
+    }
+
+    function createExperience(e) {
+
+        e.preventDefault()
+        setIndexExperience(indexExperience + 1)
+        const newExperience = new Experience (indexExperience, company, time, details);
+        experiences.push(newExperience);
+        setExperiences(experiences)
     }
 
     return (
@@ -105,13 +135,24 @@ const Curriculum = () => {
                 </form>
             </div>
             <div>
+                <form action="#">
+                <label htmlFor="">Company: </label>
+                    <input type="text" value={company} onChange={handleCompany}/>
+
+                    <label htmlFor="">Time: </label>
+                    <input type="text" value={time} onChange={handleTime}/>
+
+                    <label htmlFor="">Details: </label>
+                    <input type="text" value={details} onChange={handleDetails}/>
+
+                    <button onClick={createExperience}>Send</button>
+                </form>
+            </div>
+            <div>
             <h1>Curriculum</h1>
             <General name={name} email={email} phoneNumber={phoneNumber} location={location}/>
-            <Education  courses={courses} deleteCourse={deleteCourse} setCourses={setCourses}/>
-            {/*<section>
-                <h2>Experience</h2>
-                <div></div>
-            </section>*/}
+            <Education  courses={courses} setCourses={setCourses}/>
+            <Experiences experiences={experiences} setExperiences={setExperiences}/>
             </div>
         </>
     )

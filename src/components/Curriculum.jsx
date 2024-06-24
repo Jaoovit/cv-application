@@ -104,7 +104,7 @@ const Curriculum = () => {
     }
 
     return (
-        <div className="flex flex-row justify-around">
+        <div className="flex flex-row justify-evenly">
             <div>
                 <div className="flex flex-col gap-12 py-8">
                     <h1 className="text-xl">Insert your personal informations</h1>
@@ -142,7 +142,7 @@ const Curriculum = () => {
                             <label htmlFor="">Hours: </label>
                             <input type="text" value={hour} onChange={handleHour}/>
                         </div>
-                        <button className="hover:bg-green-400 rounded hover:text-white w-24 border-2 border-gray-100 self-end" onClick={createCourse}>Add+</button>
+                        <button className="hover:bg-green-500 rounded hover:text-white w-24 border-2 border-gray-100 self-end" onClick={createCourse}>Add+</button>
                     </form>
                 </div>
                 <div className="flex flex-col gap-8 py-8">
@@ -160,11 +160,11 @@ const Curriculum = () => {
                             <label htmlFor="">Details: </label>
                             <input type="text" value={details} onChange={handleDetails}/>
                         </div>
-                        <button className="hover:bg-green-400 rounded hover:text-white w-24 border-2 border-gray-100 self-end" onClick={createExperience}>Add+</button>
+                        <button className="hover:bg-green-500 rounded hover:text-white w-24 border-2 border-gray-100 self-end" onClick={createExperience}>Add+</button>
                     </form>
                 </div>
             </div>           
-            <div className="flex flex-col gap-12 py-8">
+            <div className="flex flex-col gap-12 p-8">
             <General name={name} email={email} phoneNumber={phoneNumber} location={location}/>
             <Education  courses={courses} setCourses={setCourses}/>
             <Experiences experiences={experiences} setExperiences={setExperiences}/>

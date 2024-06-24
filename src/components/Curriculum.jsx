@@ -104,57 +104,72 @@ const Curriculum = () => {
     }
 
     return (
-        <>
+        <div className="flex flex-row justify-around">
             <div>
-                <form action="#">
-                    <label htmlFor="">Name: {" "}</label>
-                    <input type="text" value={name} onChange={handleName}/>
-
-                    <label htmlFor="">Email: {" "}</label>
-                    <input type="email" value={email} onChange={handleEmail}/>
-
-                    <label htmlFor="">Phone Number: {" "}</label>
-                    <input type="text" value={phoneNumber} onChange={handlePhoneNumber}/>
-
-                    <label htmlFor="">Location: {" "}</label>
-                    <input type="text" value={location} onChange={handleLocation}/>
-                </form>
-            </div>
-            <div>
-                <form action="#">
-                    <label htmlFor="">Course: </label>
-                    <input type="text" value={courseName} onChange={handleCourse}/>
-
-                    <label htmlFor="">Institute: </label>
-                    <input type="text" value={institute} onChange={handleInstitute}/>
-
-                    <label htmlFor="">Hours: </label>
-                    <input type="text" value={hour} onChange={handleHour}/>
-
-                    <button onClick={createCourse}>Send</button>
-                </form>
-            </div>
-            <div>
-                <form action="#">
-                <label htmlFor="">Company: </label>
-                    <input type="text" value={company} onChange={handleCompany}/>
-
-                    <label htmlFor="">Time: </label>
-                    <input type="text" value={time} onChange={handleTime}/>
-
-                    <label htmlFor="">Details: </label>
-                    <input type="text" value={details} onChange={handleDetails}/>
-
-                    <button onClick={createExperience}>Send</button>
-                </form>
-            </div>
-            <div>
-            <h1>Curriculum</h1>
+                <div className="flex flex-col gap-12 py-8">
+                    <h1 className="text-xl">Insert your personal informations</h1>
+                    <form action="#" className="flex flex-col gap-8">
+                        <div>
+                            <label htmlFor="">Name: {" "}</label>
+                            <input type="text" value={name} onChange={handleName}/>
+                        </div>
+                        <div>
+                            <label htmlFor="">Email: {" "}</label>
+                            <input type="email" value={email} onChange={handleEmail}/>
+                        </div>
+                        <div>
+                            <label htmlFor="">Phone Number: {" "}</label>
+                            <input type="text" value={phoneNumber} onChange={handlePhoneNumber}/>
+                        </div>
+                        <div>
+                            <label htmlFor="">Location: {" "}</label>
+                            <input type="text" value={location} onChange={handleLocation}/>
+                        </div>
+                    </form>
+                </div>
+                <div className="flex flex-col gap-8 py-8">
+                    <h1 className="text-xl">Add your courses and training</h1>
+                    <form action="#" className="flex flex-col gap-8 relative">
+                        <div>
+                            <label htmlFor="">Course: </label>
+                            <input type="text" value={courseName} onChange={handleCourse}/>
+                        </div>
+                        <div>
+                            <label htmlFor="">Institute: </label>
+                            <input type="text" value={institute} onChange={handleInstitute}/>
+                        </div>
+                        <div>
+                            <label htmlFor="">Hours: </label>
+                            <input type="text" value={hour} onChange={handleHour}/>
+                        </div>
+                        <button className="hover:bg-green-400 rounded hover:text-white w-24 border-2 border-gray-100 self-end" onClick={createCourse}>Add+</button>
+                    </form>
+                </div>
+                <div className="flex flex-col gap-8 py-8">
+                    <h1 className="text-xl">Add your work experience</h1>
+                    <form action="#" className="flex flex-col gap-8">
+                        <div>
+                            <label htmlFor="">Company: </label>
+                            <input type="text" value={company} onChange={handleCompany}/>
+                        </div>
+                        <div>
+                            <label htmlFor="">Time: </label>
+                            <input type="text" value={time} onChange={handleTime}/>
+                        </div>
+                        <div>
+                            <label htmlFor="">Details: </label>
+                            <input type="text" value={details} onChange={handleDetails}/>
+                        </div>
+                        <button className="hover:bg-green-400 rounded hover:text-white w-24 border-2 border-gray-100 self-end" onClick={createExperience}>Add+</button>
+                    </form>
+                </div>
+            </div>           
+            <div className="flex flex-col gap-12 py-8">
             <General name={name} email={email} phoneNumber={phoneNumber} location={location}/>
             <Education  courses={courses} setCourses={setCourses}/>
             <Experiences experiences={experiences} setExperiences={setExperiences}/>
             </div>
-        </>
+        </div>
     )
 
     

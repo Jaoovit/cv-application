@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input {
+    border: solid 1px rgb(105, 105, 105);
+    border-radius: 5px;
+}
+
+input:hover {
+    background-color: whitesmoke;
+}
+
+form > div {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
